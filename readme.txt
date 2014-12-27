@@ -4,7 +4,7 @@ Donate link: http://www.tecnes.com
 Tags: Roomcloud booking engine, distribution system, channel manager, internet reservation system, booking system, reservation system, booking plugin, hotel reservations, reservation plugin, online booking system
 Requires at least: 3.0.1
 Tested up to: 3.4
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,12 +19,15 @@ More info at http://www.roomcloud.net
 
 1. Upload `roomcloud.php` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Prepare your shortcode string using the format: [roomcloud hotel='xyz'] where xyz is the hotel code defined in Roomcloud extranet.
-1. Place the shortcode inside the page of your website using wordpress page editor.
+1. Prepare your shortcode string using the format: [roomcloud hotel='xyz'] where xyz is the hotel code defined in Roomcloud extranet. If you want the roomcloud calendar to point to an internal worpress page, define inside the roomcloud shortcode an additional parameter: page_id and define a roomcloud_iframe shortcode
+1. Place the roomcloud shortcode inside the page of your website using wordpress page editor.
+1. In case of internal page, place the roomcloud_iframe shortcode inside the page with specified page_id using wordpress page editor.
 
 == Changelog ==
 = 1.0 =
 * Initial support
+= 1.1 =
+* Added roomcloud_iframe shortcode
 
 == Frequently Asked Questions ==
 

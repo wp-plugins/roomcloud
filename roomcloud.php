@@ -9,8 +9,46 @@
  * License: GPL2
  */
 add_shortcode('roomcloud', 'rc_booking');
+add_shortcode('roomcloud_iframe', 'rc_iframe');
+function rc_iframe($atts){
 
+/*
+echo("hotel:");
+echo($_POST['hotel']);
+echo('<br>');
+echo("page_id:");
+echo($_GET['page_id']);
+echo('<br>');
+echo("lang:");
+echo($_GET['lang']);
+echo('<br>');
+*/
+
+   $chlda = '';
+   $chld = $_POST['children'];
+    
+   if($chld>0){
+      for ($x=0; $x<$chld; $x++) {
+         $ar='child_'.$x;
+	 $a=$_POST[$ar];
+  	 $chlda=$chlda.'&child_'.$x.'='.$a;
+      } 
+   }
+
+
+   echo('<iframe width="800" height="600" src="');
+
+   echo('http://www.roomcloud.net/be/se1/hotel.jsp?hotel='.$_POST['hotel'].'&pin='.$_POST['pin'].'&start_day='.$_POST['start_day'].'&start_month='.$_POST['start_month'].'&start_year='.$_POST['start_year'].'&end_day='.$_POST['end_day'].'&end_month='.$_POST['end_month'].'&end_year='.$_POST['end_year'].'&m=1&l=0&p=0&h=0&lang='.$_GET['lang'].'&t=0&n=0&adults='.$_POST['adults'].'&children='.$_POST['children'].$chlda);
+
+   echo('"></iframe>');
+ 
+   return;
+}
 function rc_booking($atts){
+
+   $host="http://www.roomcloud.net/be/se1/hotel.jsp?";
+   if($atts["page_id"]!=null)
+      $host="?page_id=".$atts["page_id"]."&";
 
    $lang=$atts["lang"];
    if($lang== null)
@@ -38,7 +76,7 @@ function rc_booking($atts){
    $DECEMBER='December';
 
 ?>
-<FORM name='formSearch' action="http://www.roomcloud.net/be/se1/hotel.jsp?hotel=<?php echo($hotel);?>&lang=<?php echo($lang);?>" method='post'>
+<FORM name='formSearch' action="<?php echo($host);?>hotel=<?php echo($hotel);?>&lang=<?php echo($lang);?>" method='post'>
 <table id="booking_table">
 <tr>
 <td align="left">Check in</td>
