@@ -26,22 +26,22 @@ echo('<br>');
 
    $chlda = '';
    $chld = $_POST['children'];
-    
+
    if($chld>0){
       for ($x=0; $x<$chld; $x++) {
          $ar='child_'.$x;
 	 $a=$_POST[$ar];
   	 $chlda=$chlda.'&child_'.$x.'='.$a;
-      } 
+      }
    }
 
 
    echo('<iframe width="800" height="600" src="');
 
-   echo('http://www.roomcloud.net/be/se1/hotel.jsp?hotel='.$_GET['hotel'].'&pin='.$_POST['pin'].'&start_day='.$_POST['start_day'].'&start_month='.$_POST['start_month'].'&start_year='.$_POST['start_year'].'&end_day='.$_POST['end_day'].'&end_month='.$_POST['end_month'].'&end_year='.$_POST['end_year'].'&m=1&l=0&p=0&h=0&lang='.$_GET['lang'].'&t=0&n=0&adults='.$_POST['adults'].'&children='.$_POST['children'].$chlda);
+   echo('http://www.roomcloud.net/be/se1/hotel.jsp?hotel='.$_POST['hotel'].'&pin='.$_POST['pin'].'&start_day='.$_POST['start_day'].'&start_month='.$_POST['start_month'].'&start_year='.$_POST['start_year'].'&end_day='.$_POST['end_day'].'&end_month='.$_POST['end_month'].'&end_year='.$_POST['end_year'].'&m=1&l=0&p=0&h=0&lang='.$_GET['lang'].'&t=0&n=0&adults='.$_POST['adults'].'&children='.$_POST['children'].$chlda);
 
    echo('"></iframe>');
- 
+
    return;
 }
 function rc_booking($atts){
@@ -57,7 +57,7 @@ function rc_booking($atts){
    $hotel=$atts["hotel"];
    if($hotel == null)
        $hotel="144";
-   
+
    $ADULTS='Adults';
    $CHILDREN='Children';
    $SEARCH='search';
