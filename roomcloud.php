@@ -10,6 +10,11 @@
  */
 add_shortcode('roomcloud', 'rc_booking');
 add_shortcode('roomcloud_iframe', 'rc_iframe');
+function e($val){
+
+   //return $val;
+   return strip_tags($val);
+}
 function rc_iframe($atts){
 
 /*
@@ -24,13 +29,26 @@ echo($_GET['lang']);
 echo('<br>');
 */
 
+   $hotel=e($_POST['hotel']);
+   $pin=e($_POST['pin']);
+   $start_day=e($_POST['start_day']);
+   $start_month=e($_POST['start_month']);
+   $start_month=e($_POST['start_month']);
+   $end_day=e($_POST['end_day']);
+   $end_month=e($_POST['end_month']);
+   $end_year=e($_POST['end_year']);
+   $lang=e($_POST['lang']);
+   $adults=e($_POST['adults']);
+   $children=e($_POST['children']);
+
+
    $chlda = '';
-   $chld = $_POST['children'];
-    
+   $chld = e($_POST['children']);
+   
    if($chld>0){
       for ($x=0; $x<$chld; $x++) {
          $ar='child_'.$x;
-	 $a=$_POST[$ar];
+	 $a=e($_POST[$ar]);
   	 $chlda=$chlda.'&child_'.$x.'='.$a;
       } 
    }
@@ -38,7 +56,7 @@ echo('<br>');
 
    echo('<iframe width="800" height="600" src="');
 
-   echo('http://www.roomcloud.net/be/se1/hotel.jsp?hotel='.$_POST['hotel'].'&pin='.$_POST['pin'].'&start_day='.$_POST['start_day'].'&start_month='.$_POST['start_month'].'&start_year='.$_POST['start_year'].'&end_day='.$_POST['end_day'].'&end_month='.$_POST['end_month'].'&end_year='.$_POST['end_year'].'&r=1&a=1&lang='.$_POST['lang'].'&t=0&n=0&adults='.$_POST['adults'].'&children='.$_POST['children'].$chlda);
+   echo('http://www.roomcloud.net/be/se1/hotel.jsp?hotel='.$hotel.'&pin='.$pin.'&start_day='.$start_day.'&start_month='.$start_month.'&start_year='.$start_year.'&end_day='.$end_day.'&end_month='.$end_month.'&end_year='.$end_year.'&r=1&a=1&lang='.$lang.'&t=0&n=0&adults='.$adults.'&children='.$children.$chlda);
 
    echo('"></iframe>');
  
