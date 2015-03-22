@@ -13,7 +13,7 @@ add_shortcode('roomcloud_iframe', 'rc_iframe');
 function e($val){
 
    //return $val;
-   return strip_tags($val);
+   return sanitize_text_field($val);
 }
 function rc_iframe($atts){
 
@@ -30,27 +30,70 @@ echo('<br>');
 */
 
    $hotel=e($_POST['hotel']);
+   $hotel=intval($hotel);
+   if(!$hotel)
+	  $hotel='';
+	  
    $pin=e($_POST['pin']);
+   if(strlen($pin) > 20)
+      $pin='';
+	  
+	  
    $start_day=e($_POST['start_day']);
+   if(strlen($start_day) <> 2)
+      $start_day='';
+   
    $start_month=e($_POST['start_month']);
-   $start_month=e($_POST['start_month']);
+   if(strlen($start_month)  <> 2)
+      $start_month='';
+	  
+   $start_year=e($_POST['start_year']);
+   if(strlen($start_year)  <> 4)
+      $start_year='';
+   
+   
    $end_day=e($_POST['end_day']);
+   if(strlen($end_day)  <> 2)
+      $end_day='';
+	  
    $end_month=e($_POST['end_month']);
+   if(strlen($end_month)  <> 2)
+      $end_month='';
+	  
+	  
    $end_year=e($_POST['end_year']);
+   if(strlen($end_year)  <> 4)
+      $end_year='';
+	  
+	  
    $lang=e($_POST['lang']);
+   if(strlen($lang) <> 2)
+      $lang='';
+   
    $adults=e($_POST['adults']);
+   $adults=intval($adults);
+   if(!$adults)
+	  $adults='';
+   
+   
    $children=e($_POST['children']);
-
+   $children=intval($children);
+   if(!$children)
+	  $children='';
 
    $chlda = '';
-   $chld = e($_POST['children']);
+   $chld = $children;
    
    if($chld>0){
-      for ($x=0; $x<$chld; $x++) {
-         $ar='child_'.$x;
-	 $a=e($_POST[$ar]);
-  	 $chlda=$chlda.'&child_'.$x.'='.$a;
-      } 
+     for ($x=0; $x<$chld; $x++) {
+        $ar='child_'.$x;
+	    $a=e($_POST[$ar]);
+	    $a=intval($a);
+  	    if(!$a)
+		   $a='';
+		
+		$chlda=$chlda.'&child_'.$x.'='.$a;
+     } 
    }
 
 
