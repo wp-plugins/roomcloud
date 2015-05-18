@@ -3,7 +3,7 @@
  * Plugin Name: Roomcloud
  * Plugin URI: http://www.roomcloud.net
  * Description: A Plugin to add roomcloud booking form to hotel website using [roomcloud] shortcode
- * Version: 1.1
+ * Version: 1.3
  * Author: Raffaello Bindi
  * Author URI: http://www.roomcloud.net
  * License: GPL2
@@ -18,6 +18,7 @@ function e($val){
 function rc_iframe($atts){
 
 /*
+echo("");
 echo("hotel:");
 echo($_POST['hotel']);
 echo('<br>');
