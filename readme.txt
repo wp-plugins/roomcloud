@@ -28,6 +28,8 @@ More info at http://www.roomcloud.net
 * Initial support
 = 1.1 =
 * Added roomcloud_iframe shortcode
+= 1.3 =
+* Contains a security bug fix to prevent cross-site scripting attacks
 
 == Frequently Asked Questions ==
 
